@@ -21,12 +21,12 @@ def sub_rec(old, new, arr):
             out.append(new)
         else:
             out.append(arr[0])
-        out.append(sub_rec(old, new, arr[1:]))
+        out.extend(sub_rec(old, new, arr[1:]))
         return out
     else:
         if arr[0] == old:
-            return new
-        return arr[0]
+            return [new]
+        return arr
 
 
 print(sub_it(10, 5, [10, 8, 10, 12]))
