@@ -1,0 +1,50 @@
+# Q.No.5. Write collection of production rules in OPS-5 syntax 
+# to input two numbers from user and calculate sum of all the 
+# integers between the given numbers. Also trace (i.e. show status 
+# of working memory) for any one of the sample outputs given below.
+
+(P inputRule
+    (start)
+    ->
+    (write "Enter numbers: ")
+    (read <x>)
+    (read <y>)
+    (insert 'sum 0)
+    (insert 'n1 <x>)
+    (insert 'n2 <y>)
+    (remove 1)
+)
+
+(P lesserRule
+    (n1 <x> < n2 <y>)
+    (sum <s>)
+    ->
+    (insert 'sum <s>+<x>)
+    (insert 'n1 <x>+1)
+    (insert 'n2 <y>)
+    (remove 1)
+    (remove 2)
+    (remove 3)
+)
+
+(P greaterRule
+    (n1 <x> > n2 <y>)
+    (sum <s>)
+    ->
+    (insert 'sum <s>+<y>)
+    (insert 'n1 <x>)
+    (insert 'n2 <y>-1)
+    (remove 1)
+    (remove 2)
+    (remove 3)
+)
+
+(P endRule
+    (n1 <x> == n2 <y>)
+    (sum <s>)
+    ->
+    (write "The sum is: " + <s> + <x>)
+    (remove 1)
+    (remove 2)
+    (remove 3)
+)
