@@ -13,6 +13,7 @@ def print_in_range(n1, n2, choice):
         print(n1)
     elif choice == "odd" and n1 % 2 != 0:
         print(n1)
+    print()
     if n1 == n2:
         return
     else:
